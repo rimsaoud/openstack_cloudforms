@@ -1,5 +1,5 @@
 ---
-- name: Execute the Blogpost demo tasks
+- name: Execute Tasks
   hosts: localhost
   vars:
     provider_id: 00201214
@@ -26,7 +26,6 @@
         filename: /tmp/cirros-0.3.4-x86_64-disk.img
 
     - name: create Openstack instance
-      register: vm
       os_server:
         state: present
         auth:
@@ -36,9 +35,12 @@
           project_name: admin
           os_user_domain_name: Default
           os_project_domain_name: Default
-        name: irim_aa
+        name: saoud
         image: cirros
         flavor: m1.large
         nics:
           - net-id: "ea3e0dae-85a0-4ab9-94f5-7d05fbfdb0d0"
         security_groups: default
+      register: testServer
+
+    - debug: var=testServer
