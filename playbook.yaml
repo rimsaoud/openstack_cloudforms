@@ -1,0 +1,21 @@
+---
+- name: Execute the Blogpost demo tasks
+  hosts: osp.example.com
+  tasks:
+    - name: create Openstack instance
+      register: vm
+      os_server:
+        state: present
+        auth:
+          auth_url: http://192.168.0.20:5000/v3
+          username: admin
+          password: "r3dh4t1!"
+          project_name: admin
+          os_user_domain_name: Default
+          os_project_domain_name: Default
+        name: rim_test
+        image: rhel7.2
+        flavor: m1.tiny
+        availability_zone: internal
+        network: private
+        security_groups: default
