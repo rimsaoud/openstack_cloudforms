@@ -1,7 +1,30 @@
 ---
 - name: Execute the Blogpost demo tasks
-  hosts: osp.example.com
+  hosts: localhost
+  vars:
+    provider_id: 00201214
   tasks:
+    - name: Download cirros image
+      get_url:
+        url: http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
+        dest: /tmp/cirros-0.3.4-x86_64-disk.img
+
+    - name: Upload cirros image to openstack
+      os_image:
+        state: present
+        auth:
+          auth_url: http://192.168.0.20:5000/v3
+          username: admin
+          password: "r3dh4t1!"
+          project_name: admin
+          os_user_domain_name: Default
+          os_project_domain_name: Default
+        name: cirros
+        container_format: bare
+        disk_format: qcow2
+        state: present
+        filename: /tmp/cirros-0.3.4-x86_64-disk.img
+
     - name: create Openstack instance
       register: vm
       os_server:
@@ -13,9 +36,9 @@
           project_name: admin
           os_user_domain_name: Default
           os_project_domain_name: Default
-        name: rim_test
-        image: rhel7.2
-        flavor: m1.tiny
-        availability_zone: internal
-        network: private
+        name: irim_aa
+        image: cirros
+        flavor: m1.large
+        nics:
+          - net-id: "ea3e0dae-85a0-4ab9-94f5-7d05fbfdb0d0"
         security_groups: default
