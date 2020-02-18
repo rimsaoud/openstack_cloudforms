@@ -35,7 +35,7 @@
           project_name: admin
           os_user_domain_name: Default
           os_project_domain_name: Default
-        name: saoud
+        name: sblabla
         image: cirros
         flavor: m1.large
         nics:
