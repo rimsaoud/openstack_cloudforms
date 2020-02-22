@@ -36,9 +36,10 @@
           project_name: admin
           os_user_domain_name: Default
           os_project_domain_name: Default
-        name: irim_aa
+        name: rim_server
         image: cirros
         flavor: m1.large
+        keypair: root-on-osp
         nics:
           - net-id: "ea3e0dae-85a0-4ab9-94f5-7d05fbfdb0d0"
         security_groups: default
