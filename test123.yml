@@ -26,11 +26,11 @@
     - debug: 
         msg: "{{ host }}"
         
-     - name: test21
-       command: ls /root/ansible 
-       register: ls
-       become: true
+    - name: test21
+      command: ls /root/ansible 
+      register: ls
+      become: true
       
-     - debug: 
-         msg: "{{ ls }}"
+    - debug: 
+        msg: "{{ ls }}"
         
