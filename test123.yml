@@ -1,7 +1,6 @@
 ---
 - name: test 123
   hosts: localhost
-  remote_user: root
   tasks:
     - name: test1
       command: ip ad 
@@ -34,4 +33,12 @@
       
     - debug: 
         msg: "{{ cat }}"
+        
+    - name: test6
+      shell:
+        cmd: ansible --version
+      register: cat1
+      
+    - debug: 
+        msg: "{{ cat1 }}"
         
