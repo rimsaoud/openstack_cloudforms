@@ -5,6 +5,7 @@
     - name: test1
       command: ip ad 
       register: ip
+      become: true
       
     - debug: 
         msg: "{{ ip }}"
@@ -12,6 +13,7 @@
     - name: test2
       command: ls /root 
       register: ls
+      become: true
       
     - debug: 
         msg: "{{ ls }}"
@@ -19,7 +21,16 @@
     - name: test3
       command: hostname
       register: host
+      become: true
       
     - debug: 
         msg: "{{ host }}"
+        
+     - name: test21
+      command: ls /root/ansible 
+      register: ls
+      become: true
+      
+    - debug: 
+        msg: "{{ ls }}"
         
