@@ -1,0 +1,25 @@
+---
+- name: test
+  hosts: localhost
+  tasks:
+    - name: test1
+      command: ip ad 
+      register: ip
+      
+    - debug: 
+        msg: "{{ ip }}"
+        
+    - name: test2
+      command: ls /root 
+      register: ls
+      
+    - debug: 
+        msg: "{{ ls }}"
+        
+    - name: test3
+      command: hostname
+      register: host
+      
+    - debug: 
+        msg: "{{ host }}"
+        
