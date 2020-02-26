@@ -6,11 +6,19 @@
     - name: test1
       command: ip ad 
       register: ip
+  
+    - name: test2
+      shell:
+        cmd: sudo cat /tmp/index.html 
+      register: cat
+      
+    - debug: 
+        msg: "{{ cat }}"
       
     - debug: 
         msg: "{{ ip }}"
         
-    - name: test2
+    - name: test3
       shell:
         cmd: sudo ls /root 
       register: ls
@@ -18,7 +26,7 @@
     - debug: 
         msg: "{{ ls }}"
         
-    - name: test3
+    - name: test4
       command: hostname
       register: host
       become: true
