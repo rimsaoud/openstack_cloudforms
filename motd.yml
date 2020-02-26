@@ -1,0 +1,9 @@
+---
+- name: motd play
+  hosts: localhost
+  tasks:
+    - name: test motd
+      copy: 
+        src: motd.txt
+        dest: /etc/motd
+      
