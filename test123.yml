@@ -6,30 +6,22 @@
     - name: test1
       command: ip ad 
       register: ip
+      
+    - debug: 
+        msg: "{{ ip }}"
   
     - name: test2
       shell:
-        cmd: sudo cat /tmp/index.html 
+        cmd: cat /tmp/index.html 
       register: cat
       
     - debug: 
         msg: "{{ cat }}"
-      
-    - debug: 
-        msg: "{{ ip }}"
-        
-    - name: test3
-      shell:
-        cmd: sudo ls /root 
-      register: ls
-      
-    - debug: 
-        msg: "{{ ls }}"
-        
+          
+       
     - name: test4
       command: hostname
       register: host
-      become: true
       
     - debug: 
         msg: "{{ host }}"
@@ -37,7 +29,6 @@
     - name: test21
       command: ls /root/ansible 
       register: ls
-      become: true
       
     - debug: 
         msg: "{{ ls }}"
