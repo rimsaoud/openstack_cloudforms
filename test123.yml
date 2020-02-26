@@ -17,12 +17,21 @@
       
     - debug: 
         msg: "{{ host }}"
+
+    - name: test5
+      shell:
+        cmd: pwd
+      register: pwd
+      
+    - debug: 
+        msg: "{{ pwd }}"
+        
         
     - name: test2
       shell:
-        cmd: ls 
-      register: ls
+        cmd: cat index.html
+      register: cat
       
     - debug: 
-        msg: "{{ ls }}"
+        msg: "{{ cat }}"
         
