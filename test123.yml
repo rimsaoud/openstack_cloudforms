@@ -1,6 +1,6 @@
 ---
 - name: test 123
-  hosts: all
+  hosts: localhost
   tasks:
     - name: test1
       command: ip ad 
