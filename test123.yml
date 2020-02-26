@@ -1,10 +1,12 @@
 ---
 - name: test
+  gather_facts: no
   hosts: localhost
   tasks:
     - name: test1
       command: ip ad 
       register: ip
+      become: true
       
     - debug: 
         msg: "{{ ip }}"
@@ -12,6 +14,7 @@
     - name: test2
       command: ls /root 
       register: ls
+      become: true
       
     - debug: 
         msg: "{{ ls }}"
