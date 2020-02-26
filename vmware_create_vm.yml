@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  gather_facts: no
+  gather_facts: yes
   vars:
     vcenter_server: "vcenter.example.com"
     vcenter_user: "root"
@@ -15,7 +15,7 @@
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
         validate_certs: False
-        name: apache01
+        name: loulou
         template: "{{ template_name }}"
         datacenter: "{{ datacenter_name }}"
         state: poweredon
@@ -23,7 +23,7 @@
         networks:
           - name: VM Network
             type: static
-            ip: 192.168.1.34
+            ip: 192.168.1.38
             netmask: 255.255.0.0
             gateway: 192.168.0.2
         customization:
@@ -62,13 +62,6 @@
       yum:
         name: httpd
         state: present
-
-    - name: Costumize index.html file
-      copy:
-        src: /root/ansible/index.html
-        dest: /var/www/html/index.html
-        owner: apache
-        group: apache
 
     - name: Ensure Apache is running
       service:
