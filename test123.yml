@@ -2,7 +2,7 @@
 - name: test 123
   hosts: localhost
   connection: ssh
-  verbose: "4"
+  verbosity: 4
   tasks:
     - name: test1
       command: ip ad 
