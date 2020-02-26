@@ -1,6 +1,7 @@
 ---
 - name: test 123
   hosts: localhost
+  connection: ssh
   tasks:
     - name: test1
       command: ip ad 
