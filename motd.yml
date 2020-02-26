@@ -6,4 +6,5 @@
       copy: 
         src: motd.txt
         dest: /etc/motd
+      become: true
       
