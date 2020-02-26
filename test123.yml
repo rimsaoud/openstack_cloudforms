@@ -1,7 +1,7 @@
 ---
 - name: test
-  gather_facts: no
   hosts: localhost
+  remote_user: root
   tasks:
     - name: test1
       command: ip ad 
