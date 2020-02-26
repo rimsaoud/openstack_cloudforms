@@ -1,6 +1,6 @@
 ---
 - name: motd play
-  hosts: ansible1.example.com
+  hosts: all
   tasks:
     - name: test motd
       copy: 
