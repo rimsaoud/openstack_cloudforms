@@ -5,4 +5,4 @@
 ############################################
 Welcome to the Appliance Console
 
-For a menu, please type: ^[[1m^[[96mappliance_console^[[0m
+rim saoud
