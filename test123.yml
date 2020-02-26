@@ -9,14 +9,6 @@
       
     - debug: 
         msg: "{{ ip }}"
-  
-    - name: test2
-      shell:
-        cmd: cat /tmp/index.html 
-      register: cat
-      
-    - debug: 
-        msg: "{{ cat }}"
           
        
     - name: test4
@@ -26,8 +18,9 @@
     - debug: 
         msg: "{{ host }}"
         
-    - name: test21
-      command: ls /root/ansible 
+    - name: test2
+      shell:
+        cmd: ls 
       register: ls
       
     - debug: 
