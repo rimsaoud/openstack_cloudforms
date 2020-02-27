@@ -1,0 +1,11 @@
+---
+- name: Install Package
+  hosts: localhost
+  vars: 
+    package: from_playbook
+
+  tasks:
+    - name: Install package
+      yum: 
+        name={{ package }} 
+        state=present
