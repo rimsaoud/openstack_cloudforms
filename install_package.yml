@@ -10,7 +10,8 @@
       command: ip ad 
       register: ip
  
-     
+    - debug:
+        msg: "{{ package }}"
       
     - name: "Install {{ package }}  package from variable"
       yum: 
