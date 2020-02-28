@@ -2,12 +2,13 @@
 - name: Install Package
   hosts: localhost
   tasks:
+    - debug: var=package
+    
     - name: list ip addresse 
       command: ip ad 
       register: ip
  
-    - debug:
-        msg: "{{ package }}"
+
       
     - name: "Install {{ package }}  package from variable"
       yum: 
