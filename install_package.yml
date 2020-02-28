@@ -1,10 +1,6 @@
 ---
 - name: Install Package
   hosts: localhost
-  vars: 
-    package: from_playbook
-
-
   tasks:
     - name: list ip addresse 
       command: ip ad 
