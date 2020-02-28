@@ -1,8 +1,10 @@
 ---
 - name: Install Package
   hosts: localhost
+  vars:
+    - package_name: httpd
   tasks:
-    - debug: var=package
+    - debug: var=package_name
     
     - name: list ip addresse 
       command: ip ad 
@@ -10,9 +12,9 @@
  
 
       
-    - name: "Install {{ package }}  package from variable"
+    - name: "Install {{ package_name }}  package from variable"
       yum: 
-        name: "{{ package }}" 
+        name: "{{ package_name }}" 
         state: present
       register: toto
       
