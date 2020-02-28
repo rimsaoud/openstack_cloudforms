@@ -12,7 +12,7 @@
  
      
       
-    - name: Install "{{ package }}"  package from variable
+    - name: "Install {{ package }}  package from variable"
       yum: 
         name: "{{ package }}" 
         state: present
