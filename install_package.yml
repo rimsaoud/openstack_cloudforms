@@ -10,16 +10,15 @@
       command: ip ad 
       register: ip
  
-    - name: Install package nano
-      yum: 
-        name: nano 
-        state: present
+     
       
-      
-    - name: Install package from variable
+    - name: Install "{{ package }}"  package from variable
       yum: 
         name: "{{ package }}" 
         state: present
+      register: toto
+      
+    - debug: toto
         
         
         
