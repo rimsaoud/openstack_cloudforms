@@ -4,8 +4,24 @@
   vars: 
     package: from_playbook
 
+
   tasks:
-    - name: Install package
+    - name: list ip addresse 
+      command: ip ad 
+      register: ip
+ 
+    - name: Install package nano
       yum: 
-        name={{ package }} 
-        state=present
+        name: nano 
+        state: present
+      
+      
+    - name: Install package from variable
+      yum: 
+        name: "{{ package }}" 
+        state: present
+        
+        
+        
+
+  
