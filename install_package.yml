@@ -9,6 +9,8 @@
     - name: list ip addresse 
       command: ip ad 
       register: ip
+ 
+     
       
     - name: Install "{{ package }}"  package from variable
       yum: 
@@ -17,8 +19,7 @@
       register: toto
       
     - debug: 
-	    msg: "{{ toto }}"
-        
+        msg: "{{ toto }}"
         
 
   
