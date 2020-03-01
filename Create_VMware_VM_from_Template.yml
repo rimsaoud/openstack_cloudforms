@@ -16,7 +16,7 @@
         template: "{{ template_name }}"
         datacenter: "{{ datacenter_name }}"
         state: poweredon
-        folder: vmfs/volumes/vsphere1-datastore/
+        folder: /DC01/vm
         wait_for_ip_address: yes
       delegate_to: localhost
       register: server
