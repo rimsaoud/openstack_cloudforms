@@ -29,7 +29,7 @@
             gateway: 192.168.0.2
         customization:
           dns_servers: 192.168.0.1
-          hostname: "{{ vm_name }}"
+          hostname: apache
           domain: "example.com"
         wait_for_ip_address: yes
       delegate_to: localhost
