@@ -5,9 +5,8 @@
     vcenter_server: "vcenter.example.com"
     template_name: "mytemplate"
     datacenter_name: "DC01"
-    vm_name: "toto"
+    vm_name: "changeme"
   tasks:
-
     - name: Create Virtual Machines
       vmware_guest:
         hostname: "{{ vcenter_server }}"
