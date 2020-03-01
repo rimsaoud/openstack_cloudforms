@@ -2,24 +2,16 @@
 - name: Install Package
   hosts: localhost
   vars:
-    - package_name: httpd
-  tasks:
-    - debug: var=package_name
-    
-    - name: list ip addresse 
-      command: ip ad 
-      register: ip
- 
-
-      
+    package_name: httpd
+  tasks:    
     - name: "Install {{ package_name }}  package from variable"
       yum: 
         name: "{{ package_name }}" 
         state: present
-      register: toto
+      register: package
       
     - debug: 
-        msg: "{{ toto }}"
+        msg: "{{ package }}"
         
 
   
