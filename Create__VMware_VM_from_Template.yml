@@ -17,20 +17,10 @@
         datacenter: "{{ datacenter_name }}"
         state: poweredon
         folder: /DC01/vm
-        networks:
-          - name: VM Network
-            type: static
-            ip: 192.168.1.38
-            netmask: 255.255.0.0
-            gateway: 192.168.0.2
-        customization:
-          dns_servers: 192.168.0.1
-          hostname: "{{ vm_name }}"
-          domain: "example.com"
         wait_for_ip_address: yes
       delegate_to: localhost
-      register: webserver
+      register: server
 
     - debug:
-        msg: "{{ webserver }}"
+        msg: "{{ server }}"
 
