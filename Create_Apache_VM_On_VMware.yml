@@ -3,18 +3,13 @@
   gather_facts: yes
   vars:
     vcenter_server: "vcenter.example.com"
-    vcenter_user: "root"
-    vcenter_pass: "Nadia@1968"
     template_name: "template1"
     datacenter_name: "DC01"
     vm_name: "toto"
   tasks:
-
     - name: Create Virtual Machines
       vmware_guest:
         hostname: "{{ vcenter_server }}"
-        username: "{{ vcenter_user }}"
-        password: "{{ vcenter_pass }}"
         validate_certs: False
         name: "{{ vm_name }}"
         template: "{{ template_name }}"
@@ -53,6 +48,18 @@
       yum:
         name: httpd
         state: present
+        
+    - name: Add content to index.html
+      blockinfile:
+        path: /var/www/html/index.html
+        block: |
+          <!DOCTYPE html>
+          <html>
+            <head> <title>Welcome to {{ instance_name }} </title> </head>
+            <body>
+            Cette page est une page toute simple
+            </body>
+          </html>
 
     - name: Ensure Apache is running
       service:
