@@ -47,7 +47,7 @@
 
     - name: Set hostname
       hostname:
-        name: "{{ vm_name }}.example.com"
+        name: "{{ instance_name }}.example.com"
 
     - name: Ensure Apache is installed
       yum:
