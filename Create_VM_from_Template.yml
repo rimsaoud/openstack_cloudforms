@@ -1,0 +1,77 @@
+---
+- hosts: localhost
+  gather_facts: yes
+  vars:
+    vcenter_server: "vcenter.example.com"
+    template_name: "mytemplate"
+    datacenter_name: "DC01"
+    vm_name: "toto"
+  tasks:
+
+    - name: Create Virtual Machines
+      vmware_guest:
+        hostname: "{{ vcenter_server }}"
+        validate_certs: False
+        name: "{{ vm_name }}"
+        template: "{{ template_name }}"
+        datacenter: "{{ datacenter_name }}"
+        state: poweredon
+        folder: /DC01/vm
+        networks:
+          - name: VM Network
+            type: static
+            ip: 192.168.1.38
+            netmask: 255.255.0.0
+            gateway: 192.168.0.2
+        customization:
+          dns_servers: 192.168.0.1
+          hostname: "{{ vm_name }}"
+          domain: "example.com"
+        wait_for_ip_address: yes
+      delegate_to: localhost
+      register: webserver
+
+    - debug:
+        msg: "{{ webserver }}"
+
+    - name: Add new VM to Inventory
+      add_host:
+        name: "{{ webserver.instance.hw_eth0.ipaddresses[0] }}"
+        groups: created_nodes
+        ansible_user: root
+        ansible_password: "rim"
+        instance_name: "{{ webserver.instance.hw_name }}"
+
+- name: Cnam - post_installation machine
+  hosts: created_nodes
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: add default gw
+      command: "route add default gw 192.168.0.2"
+      become: true
+
+    - name: Set hostname
+      hostname:
+        name: "{{ vm_name }}.example.com"
+
+    - name: Ensure Apache is installed
+      yum:
+        name: httpd
+        state: present
+
+    - name: Ensure Apache is running
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+    - name: enable port for http
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+
+    - name: Restart service firewalld
+      service:
+        name: firewalld
