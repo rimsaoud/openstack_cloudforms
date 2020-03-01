@@ -5,7 +5,7 @@
     vcenter_server: "vcenter.example.com"
     vcenter_user: "root"
     vcenter_pass: "Nadia@1968"
-    template_name: "mytemplate"
+    template_name: "template1"
     datacenter_name: "DC01"
     vm_name: "toto"
   tasks:
