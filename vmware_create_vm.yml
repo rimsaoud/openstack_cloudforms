@@ -7,6 +7,7 @@
     vcenter_pass: "Nadia@1968"
     template_name: "mytemplate"
     datacenter_name: "DC01"
+    vm_name: "toto"
   tasks:
 
     - name: Create Virtual Machines
@@ -15,7 +16,7 @@
         username: "{{ vcenter_user }}"
         password: "{{ vcenter_pass }}"
         validate_certs: False
-        name: loulou
+        name: "{{ vm_name }}"
         template: "{{ template_name }}"
         datacenter: "{{ datacenter_name }}"
         state: poweredon
@@ -28,7 +29,7 @@
             gateway: 192.168.0.2
         customization:
           dns_servers: 192.168.0.1
-          hostname: "apache"
+          hostname: "{{ vm_name }}"
           domain: "example.com"
         wait_for_ip_address: yes
       delegate_to: localhost
@@ -56,7 +57,7 @@
 
     - name: Set hostname
       hostname:
-        name: "apache.example.com"
+        name: "{{ vm_name }}.example.com"
 
     - name: Ensure Apache is installed
       yum:
