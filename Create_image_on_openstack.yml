@@ -16,10 +16,10 @@
     - name: Install Python pip
       get_url:
         url: https://bootstrap.pypa.io/get-pip.py
-        dest: /home/stack/
+        dest: /root/ansible
 
     - name: execute Python pip
-      command: sudo python /home/stack/get-pip.py
+      command: sudo python /root/ansible/get-pip.py
 
     - name: Install Python requests module
       pip:
