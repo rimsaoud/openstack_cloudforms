@@ -1,28 +1,19 @@
 ---
 - name: Install requirement
   hosts: localhost
-  become: true
+  remote_user: awx
   gather_facts: no
   vars:
     provider_id: 00201214
   tasks:
  
-    - name: whoami
-      shell:
-        cmd: whoami
-      register: user
-      
-    - debug: 
-        msg: "{{ user }}"
-  
-
     - name: Install Python pip
       get_url:
         url: https://bootstrap.pypa.io/get-pip.py
-        dest: /root/ansible
+        dest: /home
 
     - name: execute Python pip
-      command: sudo python /root/ansible/get-pip.py
+      command: sudo python /home/get-pip.py
 
     - name: Install Python requests module
       pip:
