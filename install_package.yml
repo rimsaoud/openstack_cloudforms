@@ -1,6 +1,5 @@
 ---
 - name: Install Package
-  hosts: localhost
   vars:
     package_name: httpd
   tasks:    
