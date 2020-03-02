@@ -1,0 +1,21 @@
+---
+- name: Install requirement
+  hosts: localhost
+  become: true
+  gather_facts: no
+  vars:
+    provider_id: 00201214
+  tasks:
+
+    - name: Install Python pip
+      get_url:
+        url: https://bootstrap.pypa.io/get-pip.py
+        dest: /root/ansible
+
+    - name: execute Python pip
+      command: sudo python /root/ansible/get-pip.py
+
+    - name: Install Python requests module
+      pip:
+        name: openstacksdk
+        state: latest
