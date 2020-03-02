@@ -12,6 +12,12 @@
     container_format: "bare"
     disk_format: "qcow2"
   tasks:
+    
+    - name: Install Python requests module
+      pip:
+        name: openstacksdk
+        state: latest
+        
         
     - name: Download cirros image
       get_url:
