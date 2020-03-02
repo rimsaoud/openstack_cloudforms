@@ -6,6 +6,15 @@
   vars:
     provider_id: 00201214
   tasks:
+ 
+    - name: whoami
+      shell:
+        cmd: whoami
+      register: user
+      
+    - debug: 
+      msg: "{{ user }}"
+  
 
     - name: Install Python pip
       get_url:
