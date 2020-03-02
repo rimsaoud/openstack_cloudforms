@@ -22,8 +22,6 @@
         state: present
         auth:
           auth_url: "http://{{ auth_url }}:5000/v3"
-          username: admin
-          password: "f5bd14252e4b43e9"
           project_name: "{{ project_name }}"
           os_user_domain_name: "{{ os_user_domain_name }}"
           os_project_domain_name: "{{ os_project_domain_name }}"
