@@ -19,7 +19,7 @@
       register: pwd
       
     - debug:
-        msg: "{{ pwd }}
+        msg: "{{ pwd }}"
         
     - name: show local directory
       shell:
