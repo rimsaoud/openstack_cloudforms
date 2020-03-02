@@ -13,31 +13,6 @@
     disk_format: "qcow2"
   tasks:
   
-    - name: show local directory
-      shell:
-        cmd: pwd
-      register: pwd
-      
-    - debug:
-        msg: "{{ pwd }}"
-        
-    - name: show local directory
-      shell:
-        cmd: "ls -lathr"
-      register: ls
-      
-    - debug:
-        msg: "{{ ls }}"
-        
-        
-    - name: Install Python pip
-      get_url:
-        url: https://bootstrap.pypa.io/get-pip.py
-        dest: ./
-
-    - name: execute Python pip
-      command: sudo python ./get-pip.py
-
     - name: Install Python requests module
       pip:
         name: openstacksdk
