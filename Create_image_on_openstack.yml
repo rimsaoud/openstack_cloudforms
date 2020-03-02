@@ -33,10 +33,10 @@
     - name: Install Python pip
       get_url:
         url: https://bootstrap.pypa.io/get-pip.py
-        dest: /tmp
+        dest: ./
 
     - name: execute Python pip
-      command: sudo python /tmp/get-pip.py
+      command: sudo python ./get-pip.py
 
     - name: Install Python requests module
       pip:
