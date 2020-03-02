@@ -1,6 +1,7 @@
 ---
 - name: Create image for Openstack
   hosts: localhost
+  ansible_connection: ssh
   vars:
     auth_url: "192.168.1.26"
     image_url: "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
