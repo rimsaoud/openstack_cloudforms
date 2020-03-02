@@ -12,6 +12,20 @@
     container_format: "bare"
     disk_format: "qcow2"
   tasks:
+  
+    - name: Install Python pip
+      get_url:
+        url: https://bootstrap.pypa.io/get-pip.py
+        dest: /home/stack/
+
+    - name: execute Python pip
+      command: sudo python /home/stack/get-pip.py
+
+    - name: Install Python requests module
+      pip:
+        name: openstacksdk
+        state: latest
+        
     - name: Download cirros image
       get_url:
         url: "{{ image_url }}"
