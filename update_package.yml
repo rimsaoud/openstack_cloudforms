@@ -1,5 +1,5 @@
 ---
-- name: Install requirement
+- name: update all packages
   hosts: localhost
   gather_facts: no
   become: yes
