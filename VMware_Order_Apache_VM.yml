@@ -81,3 +81,4 @@
     - name: Restart service firewalld
       service:
         name: firewalld
+        state: restarted
