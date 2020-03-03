@@ -11,7 +11,7 @@
       vmware_guest:
         hostname: "{{ vcenter_server }}"
         validate_certs: False
-        name: "{{ vm_name }}"
+        name: "{{ vm_name }}-{{ 10000 | random }}"
         template: "{{ template_name }}"
         datacenter: "{{ datacenter_name }}"
         state: poweredon
