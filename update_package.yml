@@ -6,6 +6,5 @@
     package_name: "*"
   tasks:
     - name: upgrade one or all packages
-      yum:
-        name: "{{ package_name }}"
-        state: latest
+      shell:
+        cmd: sudo yum update -y
