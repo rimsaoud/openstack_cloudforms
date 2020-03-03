@@ -3,6 +3,7 @@
   hosts: localhost
   remote_user: awx
   gather_facts: no
+  become: true
 
   tasks:
  
@@ -12,7 +13,7 @@
         dest: /home
 
     - name: execute Python pip
-      command: sudo python /home/get-pip.py
+      command: "python /home/get-pip.py"
 
     - name: Install Python requests module
       pip:
