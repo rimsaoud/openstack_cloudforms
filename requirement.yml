@@ -3,8 +3,7 @@
   hosts: localhost
   remote_user: awx
   gather_facts: no
-  vars:
-    provider_id: 00201214
+
   tasks:
  
     - name: Install Python pip
