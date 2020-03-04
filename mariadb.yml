@@ -1,0 +1,11 @@
+---
+- name: Create image for Openstack
+  hosts: localhost
+  vars:
+    image_url: "http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img"
+    image_ref: "cirros-0.3.4-x86_64-disk.img"
+  tasks:    
+    - name: Download cirros image
+      get_url:
+        url: "{{ image_url }}"
+        dest: "/tmp/{{ image_ref }}"
