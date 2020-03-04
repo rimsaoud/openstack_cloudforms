@@ -55,13 +55,20 @@
         path: /var/www/html/index.html
         state: touch
         
+    - name: Create style.css file
+      file:
+        path: /var/www/html/style.css
+        state: touch
+        
     - name: Add content to index.html
       copy:
-        src: "{{ item }}
-        dest: /var/www/html/
-      loop:
-        - "index.html"
-        - "style.css"
+        src:  index.html
+        dest: /var/www/html/index.html
+
+    - name: Add content
+      copy:
+        src:  style.css
+        dest: /var/www/html/style.css
         
     - name: Ensure Apache is running
       service:
